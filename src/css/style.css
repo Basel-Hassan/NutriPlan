@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.loading {
+  display:none
+}
+
+.scrollBarTh {
+  scrollbar-width: thin;
+}
