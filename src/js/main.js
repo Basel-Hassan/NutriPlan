@@ -121,6 +121,10 @@ let weeklyItems = document.querySelector("#weekly-items");
 let daysOnGoal = document.querySelector("#days-on-goal");
 let currentSearchProducts = [];
 let currentSearchValue = "";
+let headerMenuBtn = document.getElementById("header-menu-btn")
+let sidebar = document.getElementById("sidebar")
+let sidebarOverlay = document.getElementById("sidebar-overlay")
+let sidebarCloseBtn = document.getElementById("sidebar-close-btn")
 
 let date = new Date();
 let currentDate = date.toLocaleDateString("en-US", {
@@ -167,6 +171,9 @@ window.addEventListener("popstate", () => {
 navLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
+
+    sidebar.classList.remove("open")
+    sidebarOverlay.classList.remove("active")
 
     navLinks.forEach((link) => {
       link.classList.add("hover:bg-gray-50", "text-gray-600");
@@ -265,6 +272,16 @@ function changeHeader(pageName) {
       break;
   }
 }
+
+headerMenuBtn.addEventListener("click" , function() {
+  sidebar.classList.add("open")
+  sidebarOverlay.classList.add("active")
+})
+
+sidebarCloseBtn.addEventListener("click" , function() {
+  sidebar.classList.remove("open")
+  sidebarOverlay.classList.remove("active")
+})
 
 // * Apis
 async function getMealsApi(endPoint) {
